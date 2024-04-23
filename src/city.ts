@@ -12,7 +12,7 @@ const KEYS = [
 
 let convertedCityList: ICity[] = [];
 // Get a list of all cities.
-function getAllCities(keys: string[] = KEYS): ICity[] {
+export function getAllCities(keys: string[] = KEYS): ICity[] {
 	if (convertedCityList.length) {
 		return convertedCityList;
 	}
@@ -23,7 +23,7 @@ function getAllCities(keys: string[] = KEYS): ICity[] {
 }
 
 // Get a list of cities belonging to a specific state and country.
-function getCitiesOfState(countryCode: string, stateCode: string): ICity[] {
+export function getCitiesOfState(countryCode: string, stateCode: string): ICity[] {
 	if (!stateCode) return [];
 	if (!countryCode) return [];
 
@@ -36,7 +36,7 @@ function getCitiesOfState(countryCode: string, stateCode: string): ICity[] {
 }
 
 // Get a list of cities belonging to a specific country.
-function getCitiesOfCountry(countryCode: string): ICity[] | undefined {
+export function getCitiesOfCountry(countryCode: string): ICity[] | undefined {
 	if (!countryCode) return [];
 
 	const cityList = getAllCities();
@@ -46,7 +46,7 @@ function getCitiesOfCountry(countryCode: string): ICity[] | undefined {
 	return cities.sort(compare);
 }
 
-function sortByStateAndName(cities: ICity[]): ICity[] {
+export function sortByStateAndName(cities: ICity[]): ICity[] {
 	return cities.sort((a, b) => {
 		const result = compare<ICity>(a, b, (entity) => {
 			return `${entity.countryCode}-${entity.stateCode}`;
